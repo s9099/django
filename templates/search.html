@@ -1,0 +1,44 @@
+{% load static %}
+<html>
+<head>
+<meta charet="UTF-8">
+<meta name="viewport" content-"width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="{% static 'show.css' %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<title>Search Data</title>
+</head>
+<body>
+<div class="loader">
+        <div></div>
+    </div>
+    <script>
+        $(window).on('load',function(){
+            $(".loader").fadeOut(2000);
+            $(".content").fadeIn(2000);
+        });
+    </script>
+    <div class="content">
+</div>
+<center>
+<img src="{% static 'lg.png' %}"/>
+</center>
+<div id="SecondDiv">
+    <form action="/">
+        <input type="submit" class="btn btn-info" value="<<Back">
+    </form>
+</div> 
+<hr>
+<center>
+<div id="SecondDiv">
+    <form action="/searchid" method="get">
+        <h2>Enter Id &nbsp;<input type="text" name="q" value="" placeholder="Search">
+        <input type="submit" value="submit"></h2>  
+    </form>
+</div>
+{{msg}}
+</div>
+</body>
+</html>

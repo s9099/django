@@ -1,0 +1,77 @@
+{% load static %}
+<html>
+<head>
+<meta charet="UTF-8">
+<meta name="viewport" content-"width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="{% static 'show.css' %}">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+<title>Data</title>
+</head>
+<body>
+<div class="loader">
+        <div></div>
+    </div>
+    <script>
+        $(window).on('load',function(){
+            $(".loader").fadeOut(2000);
+            $(".content").fadeIn(2000);
+        });
+    </script>
+    <div class="content">
+</div>
+<center>
+<img src="{% static 'lg.png' %}"/>
+<center>
+{{msg}}
+<h2 id="head">Show  Data</h2>
+<div id="SecondDiv">
+    <form action="/search" >
+        <input type="submit" class="btn btn-primary" value="<<Back">
+    </form>
+</div>
+<div id="SecondDiv">
+    <form action="/searchid" method="get">
+        <h2>Enter Id &nbsp;<input type="text" name="q" value="" placeholder="Search">
+        <input type="submit" value="submit"></h2>  
+    </form>
+</div>
+<div id="OneDiv">
+<center>
+<table class="table">
+<thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Phon-Numberr</th>
+        <th>Profile_Pic</th>
+        <th><b>Edit</th>
+        <th><b>Delete</th>
+</thead>
+{% for i in data %}
+<tr>
+    <td>{{i.Id}}</td>
+    <td>{{i.Fname}}</td>
+    <td>{{i.Lname}}</td>
+    <td>{{i.Gender}}</td>
+    <td>{{i.City}}</td>
+    <td>{{i.Phone_no}}</td>
+    <td><img src="{{i.image}}" alt="" srcset="" width="100" height="100 ">     
+    <td>
+    <a href="/edit?id={{i.Id}}"><button class="btn btn-info">Edit</button></a>
+    </td>
+    <td>
+     <a href="/delete?id={{i.Id}}"><button class="btn btn-danger">Delete</button></a>
+     </th>
+</tr>
+{% endfor%}
+</table>
+</div> 
+</div>
+</body>
+</html>

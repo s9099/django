@@ -1,0 +1,83 @@
+{% load static %}
+<html>
+<head>
+<title>CURD Opreations</title>
+<meta charet="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="{% static 'home.css' %}">
+</head>     
+<body>
+<div class="loader">
+        <div></div>
+    </div>
+    <script>
+        $(window).on('load',function(){
+            $(".loader").fadeOut(2000);
+            $(".content").fadeIn(2000);
+        });
+    </script>
+    <div class="content">
+</div>
+<div>
+<center>
+<img src="{% static 'lg.png' %}"/>
+<center>
+<div id="DivTwo">
+    <form action="/show">
+        <input type="submit"   class="btn btn-success" value="Show Records">
+    </form>
+</div>
+<div id="DivTwo">
+    <form action="/search">
+        <input type="submit"   class="btn btn-success" value="Search Records">
+    </form>
+</div> 
+<div>
+<hr>
+<div>
+<center>
+<div class="container">
+  <h2>Enter Your Info</h2>
+  <form action="/send" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="Name">First Name</label>
+      <input type="text" class="form-control"  placeholder="Enter First Name" name="fname">
+    </div>
+    <div class="form-group">
+      <label for="Lname">Last Name</label>
+      <input type="text" class="form-control"  placeholder="Enter Last Name" name="lname">
+    </div>
+     <div class="form-group">
+      <label for="gender">Gender</label>
+      <input type="text" class="form-control"  placeholder="Enter Gender" name="gender">
+    </div>
+     <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control"  placeholder="Enter Your City" name="city">
+    </div>
+     <div class="form-group">
+      <label for="phno">Ph-No</label>
+      <input type="text" class="form-control"  placeholder="Enter Phone Number" name="phno">
+    </div>
+   <div>
+    <label for = "fileToUpload" > Add an image</label >
+    <input type = "file" name="image" >
+    </div>
+    <button type="submit" class="btn btn-success  ">Submit</button>
+  </form>
+  </center>
+</div>
+</div>
+</div>
+<center>  
+<div id="msg">
+{{msg}}
+</div> 
+</body>
+</html>
+
+ 
